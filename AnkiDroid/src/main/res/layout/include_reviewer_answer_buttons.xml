@@ -59,33 +59,9 @@
 
             <LinearLayout
                 style="@style/FooterButton"
-                android:background="?attr/againButtonRef"
-                android:id="@+id/flashcard_layout_ease1"
-                android:nextFocusRight="@id/flashcard_layout_ease2"
-                android:layout_width="0dip"
-                android:layout_height="?minTouchTargetSize"
-                android:layout_weight="1"
-                android:orientation="vertical"
-                android:theme="@style/AgainButton"
-                >
-
-                <com.ichi2.ui.FixedTextView
-                    android:id="@+id/nextTime1"
-                    style="@style/AgainButtonTimeStyle"
-                    tools:text="&lt; 10 min" />
-
-                <com.ichi2.ui.FixedTextView
-                    android:id="@+id/ease1"
-                    android:text="@string/ease_button_again"
-                    style="@style/AgainButtonEaseStyle"/>
-            </LinearLayout>
-
-            <LinearLayout
-                style="@style/FooterButton"
                 android:background="?attr/hardButtonRef"
                 android:id="@+id/flashcard_layout_ease2"
-                android:nextFocusRight="@id/flashcard_layout_ease3"
-                android:nextFocusLeft="@id/flashcard_layout_ease1"
+                android:nextFocusRight="@id/flashcard_layout_ease4"
                 android:layout_width="0dip"
                 android:layout_height="?minTouchTargetSize"
                 android:layout_weight="1"
@@ -106,33 +82,10 @@
 
             <LinearLayout
                 style="@style/FooterButton"
-                android:background="?attr/goodButtonRef"
-                android:id="@+id/flashcard_layout_ease3"
-                android:nextFocusRight="@id/flashcard_layout_ease4"
-                android:nextFocusLeft="@id/flashcard_layout_ease2"
-                android:layout_width="0dip"
-                android:layout_height="?minTouchTargetSize"
-                android:layout_weight="1"
-                android:orientation="vertical"
-                android:theme="@style/GoodButton"
-                >
-
-                <com.ichi2.ui.FixedTextView
-                    android:id="@+id/nextTime3"
-                    style="@style/GoodButtonTimeStyle"
-                    tools:text="3 d" />
-
-                <com.ichi2.ui.FixedTextView
-                    android:id="@+id/ease3"
-                    android:text="@string/ease_button_good"
-                    style="@style/GoodButtonEaseStyle"/>
-            </LinearLayout>
-
-            <LinearLayout
-                style="@style/FooterButton"
                 android:background="?attr/easyButtonRef"
                 android:id="@+id/flashcard_layout_ease4"
-                android:nextFocusLeft="@id/flashcard_layout_ease3"
+                android:nextFocusLeft="@id/flashcard_layout_ease2"
+                android:nextFocusRight="@id/flashcard_layout_ease1"
                 android:layout_width="0dip"
                 android:layout_height="?minTouchTargetSize"
                 android:layout_weight="1"
@@ -149,6 +102,53 @@
                     android:id="@+id/ease4"
                     android:text="@string/ease_button_easy"
                     style="@style/EasyButtonEaseStyle" />
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/FooterButton"
+                android:background="?attr/againButtonRef"
+                android:id="@+id/flashcard_layout_ease1"
+                android:nextFocusLeft="@id/flashcard_layout_ease4"
+                android:nextFocusRight="@id/flashcard_layout_ease3"
+                android:layout_width="0dip"
+                android:layout_height="?minTouchTargetSize"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:theme="@style/AgainButton"
+                >
+
+                <com.ichi2.ui.FixedTextView
+                    android:id="@+id/nextTime1"
+                    style="@style/AgainButtonTimeStyle"
+                    tools:text="&lt; 10 min" />
+
+                <com.ichi2.ui.FixedTextView
+                    android:id="@+id/ease1"
+                    android:text="@string/ease_button_again"
+                    style="@style/AgainButtonEaseStyle"/>
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/FooterButton"
+                android:background="?attr/goodButtonRef"
+                android:id="@+id/flashcard_layout_ease3"
+                android:nextFocusLeft="@id/flashcard_layout_ease1"
+                android:layout_width="0dip"
+                android:layout_height="?minTouchTargetSize"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:theme="@style/GoodButton"
+                >
+
+                <com.ichi2.ui.FixedTextView
+                    android:id="@+id/nextTime3"
+                    style="@style/GoodButtonTimeStyle"
+                    tools:text="3 d" />
+
+                <com.ichi2.ui.FixedTextView
+                    android:id="@+id/ease3"
+                    android:text="@string/ease_button_good"
+                    style="@style/GoodButtonEaseStyle"/>
             </LinearLayout>
         </LinearLayout>
 

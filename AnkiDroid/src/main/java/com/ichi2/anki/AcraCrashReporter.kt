@@ -225,8 +225,9 @@ private object AcraCrashReporter : CrashReporter {
      */
     @VisibleForTesting(otherwise = VisibleForTesting.PRIVATE)
     fun setProductionACRAConfig(prefs: SharedPreferences) {
+        // fork: never ask to send reports to the AnkiDroid developers unless the user opts in
         // Enable or disable crash reporting based on user setting
-        setReportingMode(prefs.getString(FEEDBACK_REPORT_KEY, FEEDBACK_REPORT_ASK)!!)
+        setReportingMode(prefs.getString(FEEDBACK_REPORT_KEY, FEEDBACK_REPORT_NEVER)!!)
     }
 
     private fun fetchWebViewInformation(): HashMap<String, String> {
@@ -276,7 +277,7 @@ private object AcraCrashReporter : CrashReporter {
         val reportMode =
             context
                 .sharedPrefs()
-                .getString(FEEDBACK_REPORT_KEY, FEEDBACK_REPORT_ASK)
+                .getString(FEEDBACK_REPORT_KEY, FEEDBACK_REPORT_NEVER)
         if (onlyIfSilent) {
             // NOTE: handleException below still runs ACRA's toast interaction
             // only submits if the consent dialog is skippable
