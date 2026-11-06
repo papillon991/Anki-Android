@@ -1,3 +1,9 @@
+> **This is a modified fork of AnkiDroid.** Original: [ankidroid/Anki-Android](https://github.com/ankidroid/Anki-Android) (GPL-3.0). It is not the official app and is for personal use. Based on release v2.25.3; the only changes are:
+> 1. Answer button order: Again / Good / Hard / Easy (both the legacy and the new reviewer).
+> 2. A card font option (Settings → Appearance → Card font): deck's own / serif (Lora, MaruBuri, Shippori Mincho) / sans-serif (IBM Plex Sans JP, KR and Latin; default). The fonts are licensed under the SIL OFL 1.1 (`AnkiDroid/src/main/assets/fonts/fork/OFL.txt`).
+>
+> Also: the crash report default is "never send", and the signing key and CI (`.github/workflows/release-apk.yml`) differ. The package name (`com.ichi2.anki`) is the same as upstream, so this cannot be installed alongside the official app.
+
 <p align="center">
 <img alt="" src="docs/graphics/logos/banner_readme.png"/>
 </p>

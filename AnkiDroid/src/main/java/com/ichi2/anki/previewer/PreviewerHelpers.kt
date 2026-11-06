@@ -11,6 +11,7 @@ import com.google.android.material.shape.ShapeAppearanceModel
 import com.ichi2.anki.LanguageUtils
 import com.ichi2.anki.common.android.appContext
 import com.ichi2.anki.libanki.CardOrdinal
+import com.ichi2.anki.reviewer.ForkCardFonts
 import com.ichi2.anki.settings.Prefs
 import com.ichi2.anki.settings.enums.FrameStyle
 import com.ichi2.themes.Themes
@@ -44,6 +45,8 @@ fun stdHtml(
     val fontScale = context.resources.configuration.fontScale
     val fontScaleCss = if (fontScale != 1f) "html { zoom: $fontScale }" else ""
 
+    val forkFontCss = ForkCardFonts.currentCss()
+
     val jsAssets: List<String> =
         listOf(
             "backend/js/jquery.min.js",
@@ -69,6 +72,7 @@ fun stdHtml(
                 .night-mode button { --canvas: #606060; --fg: #eee; }
                 $colors
                 $fontScaleCss
+                $forkFontCss
             </style>
         </head>
         <body class="${bodyClass()}">
