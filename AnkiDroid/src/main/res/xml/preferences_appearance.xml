@@ -86,6 +86,13 @@
             android:entryValues="@array/full_screen_mode_values"
             android:title="@string/fullscreen_review"
             app:useSimpleSummaryProvider="true"/>
+        <ListPreference
+            android:defaultValue="gothic"
+            android:key="@string/fork_card_font_key"
+            android:entries="@array/fork_card_font_labels"
+            android:entryValues="@array/fork_card_font_values"
+            android:title="@string/fork_card_font"
+            app:useSimpleSummaryProvider="true"/>
         <SwitchPreferenceCompat
             android:defaultValue="false"
             android:key="@string/center_vertically_preference"

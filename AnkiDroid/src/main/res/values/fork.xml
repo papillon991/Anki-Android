@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Fork additions (card font option). Not translated. -->
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+    <string name="fork_card_font_key" translatable="false">forkCardFont</string>
+    <string name="fork_card_font" maxLength="41">Card font</string>
+    <string name="fork_card_font_deck">Deck\'s own font</string>
+    <string name="fork_card_font_myeongjo">Myeongjo (serif)</string>
+    <string name="fork_card_font_gothic">Gothic (sans-serif)</string>
+    <string name="fork_two_button_bar_key" translatable="false">forkTwoButtonBar</string>
+    <string name="fork_two_button_bar" maxLength="41">Two-button answer bar</string>
+    <string name="fork_two_button_bar_summ">Again | Good | Again, twice as tall. Hard and Easy are hidden. Off while large answer buttons are on.</string>
+    <string-array name="fork_card_font_labels">
+        <item>@string/fork_card_font_deck</item>
+        <item>@string/fork_card_font_myeongjo</item>
+        <item>@string/fork_card_font_gothic</item>
+    </string-array>
+    <string-array name="fork_card_font_values" translatable="false">
+        <item>deck</item>
+        <item>myeongjo</item>
+        <item>gothic</item>
+    </string-array>
+</resources>
