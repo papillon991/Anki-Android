@@ -25,5 +25,6 @@ class ReviewerCustomFonts {
 
     fun updateCssStyle(cssStyle: StringBuilder) {
         cssStyle.append(customStyle)
+        cssStyle.append(ForkCardFonts.currentCss())
     }
 }

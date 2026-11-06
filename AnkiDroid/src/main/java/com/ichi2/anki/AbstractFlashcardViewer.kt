@@ -23,6 +23,7 @@ import android.os.Handler
 import android.os.Looper
 import android.os.SystemClock
 import android.text.InputType
+import android.util.TypedValue
 import android.view.GestureDetector
 import android.view.GestureDetector.SimpleOnGestureListener
 import android.view.KeyEvent
@@ -49,6 +50,7 @@ import android.webkit.WebViewClient
 import android.widget.FrameLayout
 import android.widget.LinearLayout
 import android.widget.RelativeLayout
+import android.widget.TextView
 import androidx.activity.OnBackPressedCallback
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.ActivityResultCallback
@@ -251,6 +253,16 @@ abstract class AbstractFlashcardViewer :
     internal var easeButton2: EaseButton? = null
     internal var easeButton3: EaseButton? = null
     internal var easeButton4: EaseButton? = null
+
+    /** Fork: the right-hand 'Again' of the two-button answer bar */
+    internal var easeButton1Mirror: EaseButton? = null
+
+    /** Fork: [twoButtonBar] as set in the preferences */
+    private var forkTwoButtonBarPref = false
+
+    /** Fork: Again | Good | Again, twice as tall. Large answer buttons keep their own 2x2 grid. */
+    protected val twoButtonBar: Boolean
+        get() = forkTwoButtonBarPref && !largeAnswerButtons
     protected var topBarLayout: RelativeLayout? = null
     private var previousAnswerIndicator: PreviousAnswerIndicator? = null
 
@@ -421,7 +433,7 @@ abstract class AbstractFlashcardViewer :
                     lastClickTime = elapsedRealTime
                     automaticAnswer.onSelectEase()
                     when (view.id) {
-                        R.id.flashcard_layout_ease1 -> {
+                        R.id.flashcard_layout_ease1, R.id.flashcard_layout_ease1_mirror -> {
                             Timber.i("AbstractFlashcardViewer:: Ease_1 pressed")
                             answerCard(Rating.AGAIN)
                         }
@@ -938,11 +950,19 @@ abstract class AbstractFlashcardViewer :
                 findViewById(R.id.ease4),
                 findViewById(R.id.nextTime4),
             ).apply { setListeners(easeHandler) }
+        easeButton1Mirror =
+            EaseButton(
+                Rating.AGAIN,
+                findViewById(R.id.flashcard_layout_ease1_mirror),
+                findViewById(R.id.ease1_mirror),
+                findViewById(R.id.nextTime1_mirror),
+            ).apply { setListeners(easeHandler) }
         if (!showNextReviewTime) {
             easeButton1!!.hideNextReviewTime()
             easeButton2!!.hideNextReviewTime()
             easeButton3!!.hideNextReviewTime()
             easeButton4!!.hideNextReviewTime()
+            easeButton1Mirror!!.hideNextReviewTime()
         }
         flipCardLayout = findViewById(R.id.flashcard_layout_flip)
         flipCardLayout?.let { layout ->
@@ -981,14 +1001,23 @@ abstract class AbstractFlashcardViewer :
         if (animationEnabled()) {
             flipCardLayout?.setBackgroundResource(getResFromAttr(this, R.attr.hardButtonRippleRef))
         }
-        if (!buttonHeightSet && relativeButtonSize != 100) {
+        // Fork: the two-button answer bar is twice as tall, still scaled by 'Button size'
+        val buttonScale = if (twoButtonBar) relativeButtonSize * 2 else relativeButtonSize
+        if (!buttonHeightSet && buttonScale != 100) {
             val params = flipCardLayout!!.layoutParams
-            params.height = params.height * relativeButtonSize / 100
-            easeButton1!!.setButtonScale(relativeButtonSize)
-            easeButton2!!.setButtonScale(relativeButtonSize)
-            easeButton3!!.setButtonScale(relativeButtonSize)
-            easeButton4!!.setButtonScale(relativeButtonSize)
+            params.height = params.height * buttonScale / 100
+            easeButton1!!.setButtonScale(buttonScale)
+            easeButton2!!.setButtonScale(buttonScale)
+            easeButton3!!.setButtonScale(buttonScale)
+            easeButton4!!.setButtonScale(buttonScale)
+            easeButton1Mirror!!.setButtonScale(buttonScale)
             buttonHeightSet = true
+        }
+        if (twoButtonBar) {
+            (flipCardLayout!!.getChildAt(0) as? TextView)?.setTextSize(TypedValue.COMPLEX_UNIT_SP, FORK_BAR_TEXT_SP)
+            for (button in listOf(easeButton1, easeButton3, easeButton1Mirror)) {
+                button!!.setTextSizes(FORK_BAR_TEXT_SP, FORK_BAR_TIME_SP)
+            }
         }
         initialFlipCardHeight = flipCardLayout!!.layoutParams.height
         if (largeAnswerButtons) {
@@ -1202,6 +1231,7 @@ abstract class AbstractFlashcardViewer :
         easeButton2?.hide()
         easeButton3?.hide()
         easeButton4?.hide()
+        easeButton1Mirror?.hide()
     }
 
     /**
@@ -1257,6 +1287,7 @@ abstract class AbstractFlashcardViewer :
         doubleScrolling = preferences.getBoolean("double_scrolling", false)
         prefShowTopbar = preferences.getBoolean("showTopbar", true)
         largeAnswerButtons = preferences.getBoolean("showLargeAnswerButtons", false)
+        forkTwoButtonBarPref = preferences.getBoolean(getString(R.string.fork_two_button_bar_key), true)
         doubleTapTimeInterval = Prefs.doubleTapInterval
         gesturesEnabled = preferences.getBoolean(GestureProcessor.PREF_KEY, false)
         if (gesturesEnabled) {
@@ -1598,6 +1629,7 @@ abstract class AbstractFlashcardViewer :
         easeButton2?.unblockBasedOnEase(currentEase)
         easeButton3?.unblockBasedOnEase(currentEase)
         easeButton4?.unblockBasedOnEase(currentEase)
+        easeButton1Mirror?.unblockBasedOnEase(currentEase)
         if (typeAnswer?.validForEditText() == true) {
             answerField?.isEnabled = true
         }
@@ -2799,6 +2831,10 @@ abstract class AbstractFlashcardViewer :
 
         // maximum screen distance from initial touch where we will consider a click related to the touch
         private const val CLICK_ACTION_THRESHOLD = 200
+
+        /** Fork: label sizes of the two-button answer bar */
+        private const val FORK_BAR_TEXT_SP = 18f
+        private const val FORK_BAR_TIME_SP = 13f
 
         private var minimalClickPrefHintShown = false
 

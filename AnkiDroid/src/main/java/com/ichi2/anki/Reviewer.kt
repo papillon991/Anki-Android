@@ -629,6 +629,7 @@ open class Reviewer :
                 R.id.flashcard_layout_ease2,
                 R.id.flashcard_layout_ease3,
                 R.id.flashcard_layout_ease4,
+                R.id.flashcard_layout_ease1_mirror,
             ).map { answerArea.findViewById<View>(it) }
         answerArea.touchDelegate = AnswerBandTouchDelegate(answerArea, buttons)
     }
@@ -1452,6 +1453,17 @@ open class Reviewer :
         easeButton3!!.setup(background[2], textColor[2], R.string.ease_button_good)
         easeButton4!!.setVisibility(View.VISIBLE)
         easeButton3!!.requestFocus()
+        // Fork: Again | Good | Again
+        if (twoButtonBar) {
+            easeButton2!!.setVisibility(View.GONE)
+            easeButton4!!.setVisibility(View.GONE)
+            easeButton1Mirror!!.setVisibility(View.VISIBLE)
+            easeButton1Mirror!!.setColor(background[0])
+            easeButton3!!.setWeight(2f)
+        } else {
+            easeButton1Mirror!!.setVisibility(View.GONE)
+            easeButton3!!.setWeight(1f)
+        }
 
         // Show next review time
         if (shouldShowNextReviewTime()) {
@@ -1462,6 +1474,7 @@ open class Reviewer :
                 easeButton2!!.nextTime = labels[1]
                 easeButton3!!.nextTime = labels[2]
                 easeButton4!!.nextTime = labels[3]
+                easeButton1Mirror!!.nextTime = labels[0]
             }
         }
     }

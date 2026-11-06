@@ -38,6 +38,21 @@ class ViewerResourceHandlerTest : RobolectricTest() {
         assertNull(response, "a request escaping the media directory must not be served")
     }
 
+    @Test
+    fun `fork font asset is served`() {
+        val response = ViewerResourceHandler(targetContext).shouldInterceptRequest(request("/_fork_fonts/Lora.woff2"))
+
+        assertEquals("font/woff2", assertNotNull(response).mimeType)
+        assertEquals("wOF2", String(response.data.readNBytes(4)))
+    }
+
+    @Test
+    fun `fork font path cannot escape the font folder`() {
+        val response = ViewerResourceHandler(targetContext).shouldInterceptRequest(request("/_fork_fonts/../flashcard.css"))
+
+        assertNull(response)
+    }
+
     private fun request(path: String): WebResourceRequest =
         mock {
             on { url } doReturn "http://127.0.0.1$path".toUri()
