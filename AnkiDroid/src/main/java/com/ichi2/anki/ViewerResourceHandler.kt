@@ -7,6 +7,7 @@ import android.webkit.WebResourceRequest
 import android.webkit.WebResourceResponse
 import com.ichi2.anki.common.annotations.NeedsTest
 import com.ichi2.anki.common.storage.CollectionHelper
+import com.ichi2.anki.reviewer.ForkCardFonts
 import com.ichi2.utils.AssetHelper.guessMimeType
 import com.ichi2.utils.withFileNameSafe
 import timber.log.Timber
@@ -37,6 +38,13 @@ class ViewerResourceHandler(
         }
 
         try {
+            if (path.startsWith(ForkCardFonts.FONT_PATH_PREFIX)) {
+                val name = path.removePrefix(ForkCardFonts.FONT_PATH_PREFIX)
+                if (name.isEmpty() || name.contains('/') || name.contains("..")) return null
+                val inputStream = assetManager.open("fonts/fork/$name")
+                return WebResourceResponse("font/woff2", null, inputStream)
+            }
+
             if (path.startsWith(MATHJAX_PATH_PREFIX)) {
                 val mathjaxAssetPath =
                     Paths

@@ -21,6 +21,7 @@ import com.ichi2.anki.R
 import com.ichi2.anki.databinding.ItemDeckBinding
 import com.ichi2.anki.deckpicker.DisplayDeckNode
 import com.ichi2.anki.libanki.DeckId
+import com.ichi2.anki.reviewer.ForkPixelTheme
 import com.ichi2.utils.dp
 import kotlinx.coroutines.runBlocking
 import net.ankiweb.rsdroid.RustCleanup
@@ -122,7 +123,11 @@ class DeckAdapter(
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int,
-    ): ViewHolder = ViewHolder(ItemDeckBinding.inflate(layoutInflater, parent, false))
+    ): ViewHolder =
+        ViewHolder(ItemDeckBinding.inflate(layoutInflater, parent, false)).also {
+            // Fork: Pixel Cold War theme font on the counts only; the deck name keeps the system font
+            if (ForkPixelTheme.isActive) ForkPixelTheme.applyNeo(16f, it.binding.deckNew, it.binding.deckLearn, it.binding.deckReview)
+        }
 
     override fun onBindViewHolder(
         holder: ViewHolder,

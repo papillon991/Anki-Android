@@ -48,7 +48,7 @@ abstract class ScreenshotTest : RobolectricTest() {
 
     var fileNamePrefix = ""
 
-    enum class ThemeConfig { LIGHT, PLAIN, DARK, BLACK, EINK }
+    enum class ThemeConfig { LIGHT, PLAIN, DARK, BLACK, EINK, PIXEL_COLD_WAR }
 
     enum class DeviceConfig { PHONE, TABLET, FOLDABLE, DESKTOP }
 
@@ -92,7 +92,7 @@ abstract class ScreenshotTest : RobolectricTest() {
 
     // ./gradlew :AnkiDroid:recordRoborazziPlayDebug -Pscreenshot -Ptheme=black,plain
     protected open fun applyThemeConfig() {
-        val isNightMode = theme == ThemeConfig.DARK || theme == ThemeConfig.BLACK
+        val isNightMode = theme == ThemeConfig.DARK || theme == ThemeConfig.BLACK || theme == ThemeConfig.PIXEL_COLD_WAR
         if (isNightMode) {
             RuntimeEnvironment.setQualifiers("+night")
         }
@@ -107,6 +107,7 @@ abstract class ScreenshotTest : RobolectricTest() {
             ThemeConfig.EINK -> prefs.dayTheme = DayTheme.EINK
             ThemeConfig.DARK -> prefs.nightTheme = NightTheme.DARK
             ThemeConfig.BLACK -> prefs.nightTheme = NightTheme.BLACK
+            ThemeConfig.PIXEL_COLD_WAR -> prefs.nightTheme = NightTheme.PIXEL_COLD_WAR
         }
     }
 

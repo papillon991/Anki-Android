@@ -82,6 +82,7 @@
     <string-array name="night_theme_labels">
         <item>@string/night_theme_black</item>
         <item>@string/night_theme_dark</item>
+        <item>@string/fork_theme_pixel_cold_war</item>
     </string-array>
     <string-array name="html_size_code_labels">
         <item>@string/html_size_code_xx_small</item>
@@ -199,6 +200,7 @@
     <string-array name="night_theme_values">
         <item>@string/theme_black_value</item>
         <item>@string/theme_dark_value</item>
+        <item>@string/theme_pixel_cold_war_value</item>
     </string-array>
 
     <string-array name="sync_media_entries">

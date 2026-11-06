@@ -39,6 +39,11 @@
         app:isPreferenceVisible="false"
         />
     <SwitchPreferenceCompat
+        android:key="@string/fork_two_button_bar_key"
+        android:defaultValue="true"
+        android:summary="@string/fork_two_button_bar_summ"
+        android:title="@string/fork_two_button_bar"/>
+    <SwitchPreferenceCompat
         android:key="@string/show_large_answer_buttons_preference"
         android:defaultValue="false"
         android:summary="@string/show_large_answer_buttons_summ"

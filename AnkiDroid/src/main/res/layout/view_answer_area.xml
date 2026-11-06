@@ -37,17 +37,6 @@
             android:layout_weight="1" />
 
         <com.ichi2.anki.ui.windows.reviewer.AnswerButton
-            android:id="@+id/hard_button"
-            style="@style/AnswerButton"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_marginHorizontal="@dimen/answer_button_margin_horizontal"
-            app:easeName="@string/ease_button_hard"
-            android:textColor="?hardTextColor"
-            android:backgroundTint="?hardBackgroundColor"
-            android:layout_weight="1" />
-
-        <com.ichi2.anki.ui.windows.reviewer.AnswerButton
             android:id="@+id/good_button"
             style="@style/AnswerButton"
             android:layout_width="0dp"
@@ -56,6 +45,17 @@
             app:easeName="@string/ease_button_good"
             android:textColor="?goodTextColor"
             android:backgroundTint="?goodBackgroundColor"
+            android:layout_weight="1" />
+
+        <com.ichi2.anki.ui.windows.reviewer.AnswerButton
+            android:id="@+id/hard_button"
+            style="@style/AnswerButton"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="@dimen/answer_button_margin_horizontal"
+            app:easeName="@string/ease_button_hard"
+            android:textColor="?hardTextColor"
+            android:backgroundTint="?hardBackgroundColor"
             android:layout_weight="1" />
 
         <com.ichi2.anki.ui.windows.reviewer.AnswerButton

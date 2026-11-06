@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Fork: Pixel Cold War night theme. Mirrors the attributes theme_black.xml overrides, filled from the
+  px_* palette, and flattens the app: square corners, no elevation on the study screen, no translucent
+  highlights. The study screen buttons are Px.button drawables (footer_button_pcw_*); fonts are applied
+  in code by reviewer/ForkPixelTheme.kt so that user text (deck names, cards) keeps the system font.
+-->
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <style name="Base.Theme.Dark.PixelColdWar" parent="Theme_Dark">
+        <!-- Android and Material colors -->
+        <item name="colorPrimary">@color/px_brass</item>
+        <item name="colorOnPrimary">@color/px_ink</item>
+        <item name="colorPrimaryDark">@color/px_desk</item>
+        <item name="colorAccent">@color/px_brass</item>
+        <!-- primary actions (FAB) are paper buttons with ink text, as in the personal apps -->
+        <item name="colorPrimaryContainer">@color/px_paper</item>
+        <item name="colorOnPrimaryContainer">@color/px_ink</item>
+        <item name="colorSecondary">@color/px_brass</item>
+        <item name="colorOnSecondary">@color/px_ink</item>
+        <item name="colorSecondaryContainer">@color/px_raised</item>
+        <item name="colorOnSecondaryContainer">@color/px_text</item>
+        <item name="colorTertiary">@color/px_blue_text</item>
+        <item name="colorSurface">@color/px_desk</item>
+        <item name="colorOnSurface">@color/px_text</item>
+        <item name="colorOnSurfaceVariant">@color/px_sub</item>
+        <item name="colorSurfaceVariant">@color/px_plate</item>
+        <item name="colorSurfaceContainerLowest">@color/px_desk</item>
+        <item name="colorSurfaceContainerLow">@color/px_desk</item>
+        <item name="colorSurfaceContainer">@color/px_plate</item>
+        <item name="colorSurfaceContainerHigh">@color/px_plate</item>
+        <item name="colorSurfaceContainerHighest">@color/px_raised</item>
+        <item name="colorOutline">@color/px_plate_light</item>
+        <item name="colorOutlineVariant">@color/px_plate</item>
+        <item name="colorError">@color/px_warn</item>
+        <item name="colorOnError">@color/px_ink</item>
+        <item name="colorControlNormal">@color/px_dim</item>
+        <item name="colorControlActivated">@color/px_brass</item>
+        <item name="colorControlHighlight">@color/px_plate_light</item>
+        <item name="android:textColor">@color/text_color_pcw</item>
+        <item name="android:textColorPrimary">@color/px_text</item>
+        <item name="android:textColorSecondary">@color/text_color_secondary_pcw</item>
+        <item name="android:textColorHint">@color/px_hint</item>
+        <item name="android:colorBackground">@color/px_desk</item>
+        <item name="android:windowBackground">@color/px_desk</item>
+        <!-- dialogs (AppCompat overlays) and menus take their background from here -->
+        <item name="colorBackgroundFloating">@color/px_plate</item>
+        <item name="android:colorBackgroundFloating">@color/px_plate</item>
+        <item name="preferenceCategoryTitleTextColor">@color/px_brass</item>
+        <item name="widgetColorActivated">@color/px_brass</item>
+        <!-- Square, flat -->
+        <item name="shapeAppearanceCornerExtraSmall">@style/ShapeAppearance.AnkiDroid.PixelColdWar</item>
+        <item name="shapeAppearanceCornerSmall">@style/ShapeAppearance.AnkiDroid.PixelColdWar</item>
+        <item name="shapeAppearanceCornerMedium">@style/ShapeAppearance.AnkiDroid.PixelColdWar</item>
+        <item name="shapeAppearanceCornerLarge">@style/ShapeAppearance.AnkiDroid.PixelColdWar</item>
+        <item name="shapeAppearanceCornerExtraLarge">@style/ShapeAppearance.AnkiDroid.PixelColdWar</item>
+        <item name="shapeAppearanceSmallComponent">@style/ShapeAppearance.AnkiDroid.PixelColdWar</item>
+        <item name="shapeAppearanceMediumComponent">@style/ShapeAppearance.AnkiDroid.PixelColdWar</item>
+        <item name="shapeAppearanceLargeComponent">@style/ShapeAppearance.AnkiDroid.PixelColdWar</item>
+        <item name="dialogCornerRadius">0dp</item>
+        <item name="android:dialogCornerRadius" tools:targetApi="p">0dp</item>
+        <item name="studyScreenElevation">0dp</item>
+        <item name="widgetStrokeWidth">2dp</item>
+        <item name="widgetStrokeColor">@color/px_ink</item>
+        <!-- Action bar styles -->
+        <item name="appBarColor">@color/px_desk</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionModeOverlay">true</item>
+        <item name="actionBarTextColor">@color/px_text</item>
+        <item name="actionBarPopupTextColor">@color/px_text</item>
+        <item name="actionModeBackground">@color/px_plate</item>
+        <item name="toolbarStyle">@style/Widget.AnkiDroid.Toolbar.PixelColdWar</item>
+        <!-- Tab layout -->
+        <item name="tabLayoutBackgroundColor">@color/px_desk</item>
+        <item name="tabActiveIconColor">@color/px_brass</item>
+        <!-- Navigation drawer -->
+        <item name="navDrawerItemColor">@color/px_text</item>
+        <item name="navigationViewStyle">@style/Widget.AnkiDroid.NavigationView.PixelColdWar</item>
+        <!-- Deck list colors and divider -->
+        <item name="currentDeckBackground">@drawable/item_background_selected</item>
+        <item name="currentDeckBackgroundColor">@color/px_plate</item>
+        <item name="focusedRowBackgroundColor">@color/px_plate</item>
+        <item name="dynDeckColor">@color/px_blue_text</item>
+        <item name="deckDivider">@drawable/divider_pcw</item>
+        <item name="expandRef">@drawable/ic_chevron_right_white</item>
+        <item name="collapseRef">@drawable/ic_expand_more_white</item>
+        <!-- Count colors -->
+        <item name="newCountColor">@color/px_blue_text</item>
+        <item name="learnCountColor">@color/px_red_text</item>
+        <item name="reviewCountColor">@color/px_ok</item>
+        <item name="buryCountColor">@color/px_dim</item>
+        <item name="zeroCountColor">@color/px_plate_light</item>
+        <!-- Study Screen colors -->
+        <item name="showAnswerButtonBackground">@color/px_raised</item>
+        <item name="showAnswerColor">@color/px_desk</item>
+        <item name="topBarColor">@color/px_desk</item>
+        <item name="maxTimerColor">@color/px_warn</item>
+        <item name="answerButtonTextColor">@color/px_ink</item>
+        <item name="againButtonTextColor">@color/px_text</item>
+        <item name="hardButtonTextColor">@color/px_text</item>
+        <item name="goodButtonTextColor">@color/px_ink</item>
+        <item name="easyButtonTextColor">@color/px_text</item>
+
+        <item name="alternativeBackgroundColor">@color/px_plate</item>
+        <item name="againTextColor">@color/px_red_text</item>
+        <item name="hardTextColor">@color/px_sub</item>
+        <item name="goodTextColor">@color/px_ok</item>
+        <item name="easyTextColor">@color/px_blue_text</item>
+        <item name="againBackgroundColor">@color/px_plate</item>
+        <item name="hardBackgroundColor">@color/px_plate</item>
+        <item name="goodBackgroundColor">@color/px_plate</item>
+        <item name="easyBackgroundColor">@color/px_plate</item>
+        <!-- Study Screen button drawables: no ripple, so the ripple variants are the same drawables -->
+        <item name="againButtonRef">@drawable/footer_button_pcw_again</item>
+        <item name="hardButtonRef">@drawable/footer_button_pcw_raised</item>
+        <item name="goodButtonRef">@drawable/footer_button_pcw_paper</item>
+        <item name="easyButtonRef">@drawable/footer_button_pcw_raised</item>
+        <item name="againButtonRippleRef">@drawable/footer_button_pcw_again</item>
+        <item name="hardButtonRippleRef">@drawable/footer_button_pcw_raised</item>
+        <item name="goodButtonRippleRef">@drawable/footer_button_pcw_paper</item>
+        <item name="easyButtonRippleRef">@drawable/footer_button_pcw_raised</item>
+        <!-- Card Browser Colors -->
+        <item name="cardBrowserDivider">@color/px_plate_light</item>
+        <!-- Browser colors -->
+        <item name="suspendedColor">@color/px_ink_sub</item>
+        <item name="selectedColor">@color/px_blue_deep</item>
+        <item name="markedColor">@color/px_red_deep</item>
+        <item name="buriedColor">@color/px_plate_light</item>
+        <!-- Note editor colors -->
+        <item name="duplicateColor">@color/px_red_deep</item>
+        <item name="editTextBackgroundColor">@color/px_plate_dark</item>
+        <item name="editTextHighlightColor">@color/px_blue_deep</item>
+        <item name="toolbarBackgroundColor">@color/px_plate</item>
+        <item name="toolbarIconColor">@color/px_text</item>
+        <item name="buttonShadowColor">@color/px_plate_dark</item>
+        <item name="buttonRippleColor">@color/px_plate_light</item>
+        <item name="buttonForegroundColor">@color/px_raised</item>
+        <!-- FAB -->
+        <item name="fab_normal">@color/px_paper</item>
+        <item name="fab_pressed">@color/px_paper_dark</item>
+        <!-- Images -->
+        <item name="navDrawerImage">@drawable/nav_drawer_logo_black_theme</item>
+        <!-- Dialog styles -->
+        <item name="android:listPreferredItemHeight">56dip</item>
+        <item name="alertDialogTheme">@style/ThemeOverlay.AnkiDroid.AlertDialog.PixelColdWar</item>
+        <item name="materialAlertDialogTheme">@style/ThemeOverlay.AnkiDroid.AlertDialog.PixelColdWar</item>
+        <!--Custom Tabs colors-->
+        <item name="customTabNavBarColor">@color/px_desk</item>
+        <item name="popupBackgroundColor">@color/px_plate</item>
+        <item name="android:statusBarColor">@color/px_desk</item>
+        <item name="android:navigationBarColor">@color/px_desk</item>
+
+        <item name="editTextDisabled">@color/px_plate_light</item>
+
+        <!-- Snackbar -->
+        <item name="snackbarStyle">@style/SnackbarStyle.PixelColdWar</item>
+        <item name="snackbarTextViewStyle">@style/SnackbarTextStyle.PixelColdWar</item>
+        <item name="snackbarButtonStyle">@style/SnackbarButtonStyle.PixelColdWar</item>
+        <item name="snackbarBackgroundTintColor">@color/px_raised</item>
+        <item name="snackbarButtonTextColor">@color/px_brass</item>
+
+        <!-- Introduction -->
+        <item name="introductionLogoTransparent">@color/px_desk</item>
+
+        <!-- Card-->
+        <item name="cardViewStyle">@style/PixelColdWarCardBackground</item>
+
+        <!-- ProgressDialog-->
+        <item name="dialogBackground">@color/px_plate</item>
+        <item name="progressDialogButtonTextColor">@color/px_brass</item>
+
+        <item name="incrementerButtonBackground">@color/px_raised</item>
+        <item name="badgeWarningColor">@color/px_warn</item>
+        <item name="badgeErrorColor">@color/px_red</item>
+    </style>
+
+    <style name="ShapeAppearance.AnkiDroid.PixelColdWar" parent="">
+        <item name="cornerFamily">cut</item>
+        <item name="cornerSize">0dp</item>
+    </style>
+
+    <style name="Widget.AnkiDroid.NavigationView.PixelColdWar" parent="Widget.Material3.NavigationView">
+        <item name="drawerLayoutCornerSize">0dp</item>
+    </style>
+
+    <style name="Widget.AnkiDroid.Toolbar.PixelColdWar" parent="Widget.Material3.Toolbar">
+        <item name="titleTextAppearance">@style/TextAppearance.AnkiDroid.PixelColdWar.Title</item>
+    </style>
+
+    <!-- Neo둥근모 is drawn on a 16px grid; 16dp is crisp at whole-number densities -->
+    <style name="TextAppearance.AnkiDroid.PixelColdWar.Title" parent="TextAppearance.Material3.TitleMedium">
+        <item name="android:fontFamily">@font/neodgm</item>
+        <item name="fontFamily">@font/neodgm</item>
+        <item name="android:textSize">16dp</item>
+        <item name="android:textColor">?attr/actionBarTextColor</item>
+    </style>
+
+    <style name="SnackbarStyle.PixelColdWar" parent="Widget.Material3.Snackbar">
+        <item name="android:background">@drawable/bg_snackbar_pcw</item>
+        <item name="android:backgroundTint">@null</item>
+        <item name="backgroundTint">@null</item>
+        <item name="android:elevation">0dp</item>
+        <item name="elevation">0dp</item>
+    </style>
+
+    <style name="SnackbarTextStyle.PixelColdWar" parent="Widget.MaterialComponents.Snackbar.TextView">
+        <item name="android:textColor">@color/px_text</item>
+    </style>
+
+    <style name="SnackbarButtonStyle.PixelColdWar" parent="Widget.Material3.Button.TextButton.Snackbar">
+        <item name="android:textColor">@color/px_brass</item>
+    </style>
+
+    <style name="PixelColdWarCardBackground" parent="CardView">
+        <item name="cardBackgroundColor">@color/px_plate</item>
+        <item name="cardCornerRadius">0dp</item>
+        <item name="cardElevation">0dp</item>
+    </style>
+
+    <style name="ThemeOverlay.AnkiDroid.AlertDialog.PixelColdWar" parent="ThemeOverlay.AnkiDroid.AlertDialog">
+        <item name="android:colorBackground">@color/px_plate</item>
+        <item name="android:windowBackground">@drawable/bg_dialog_pcw</item>
+        <item name="android:windowElevation">0dp</item>
+        <item name="android:elevation">0dp</item>
+        <item name="elevation">0dp</item>
+        <item name="dialogCornerRadius">0dp</item>
+        <item name="shapeAppearanceCornerExtraLarge">@style/ShapeAppearance.AnkiDroid.PixelColdWar</item>
+        <item name="colorPrimary">@color/px_brass</item>
+    </style>
+
+    <style name="Theme_Dark.PixelColdWar" parent="Base.Theme.Dark.PixelColdWar"/>
+</resources>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Fork, Pixel Cold War theme: square dialog plate (bg_dialog_eink.xml with the theme's colours) -->
+<inset xmlns:android="http://schemas.android.com/apk/res/android"
+    android:insetLeft="24dp"
+    android:insetTop="16dp"
+    android:insetRight="24dp"
+    android:insetBottom="16dp">
+
+    <shape android:shape="rectangle">
+        <solid android:color="@color/px_plate"/>
+        <stroke android:width="2dp" android:color="@color/px_plate_light"/>
+    </shape>
+
+</inset>

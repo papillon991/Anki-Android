@@ -11,4 +11,7 @@ enum class NightTheme(
 ) : Theme {
     BLACK(R.string.theme_black_value, R.style.Theme_Dark_Black),
     DARK(R.string.theme_dark_value, R.style.Theme_Dark),
+
+    /** Fork: theme_pixel_cold_war.xml */
+    PIXEL_COLD_WAR(R.string.theme_pixel_cold_war_value, R.style.Theme_Dark_PixelColdWar),
 }

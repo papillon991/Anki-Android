@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Fork, Pixel Cold War theme: Again button. Px.button as layers (1 unit = 2dp): stepped corners,
+     a 1-unit shadow, and pressed sinks into the shadow. No ripple. -->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_enabled="false">
+      <layer-list>
+        <item android:left="4dp" android:top="2dp" android:right="6dp" android:bottom="4dp"><shape><solid android:color="@color/px_ink" /></shape></item>
+        <item android:left="2dp" android:top="4dp" android:right="4dp" android:bottom="6dp"><shape><solid android:color="@color/px_ink" /></shape></item>
+        <item android:left="6dp" android:top="4dp" android:right="8dp" android:bottom="6dp"><shape><solid android:color="@color/px_raised" /></shape></item>
+        <item android:left="4dp" android:top="6dp" android:right="6dp" android:bottom="8dp"><shape><solid android:color="@color/px_raised" /></shape></item>
+      </layer-list>
+    </item>
+    <item android:state_pressed="true">
+      <layer-list>
+        <item android:left="6dp" android:top="4dp" android:right="4dp" android:bottom="2dp"><shape><solid android:color="@color/px_ink" /></shape></item>
+        <item android:left="4dp" android:top="6dp" android:right="2dp" android:bottom="4dp"><shape><solid android:color="@color/px_ink" /></shape></item>
+        <item android:left="8dp" android:top="6dp" android:right="6dp" android:bottom="4dp"><shape><solid android:color="@color/px_ink" /></shape></item>
+        <item android:left="6dp" android:top="8dp" android:right="4dp" android:bottom="6dp"><shape><solid android:color="@color/px_ink" /></shape></item>
+      </layer-list>
+    </item>
+    <item>
+      <layer-list>
+        <item android:left="6dp" android:top="4dp" android:right="4dp" android:bottom="2dp"><shape><solid android:color="@color/px_plate_dark" /></shape></item>
+        <item android:left="4dp" android:top="6dp" android:right="2dp" android:bottom="4dp"><shape><solid android:color="@color/px_plate_dark" /></shape></item>
+        <item android:left="4dp" android:top="2dp" android:right="6dp" android:bottom="4dp"><shape><solid android:color="@color/px_ink" /></shape></item>
+        <item android:left="2dp" android:top="4dp" android:right="4dp" android:bottom="6dp"><shape><solid android:color="@color/px_ink" /></shape></item>
+        <item android:left="6dp" android:top="4dp" android:right="8dp" android:bottom="6dp"><shape><solid android:color="@color/px_ink" /></shape></item>
+        <item android:left="4dp" android:top="6dp" android:right="6dp" android:bottom="8dp"><shape><solid android:color="@color/px_ink" /></shape></item>
+        <item android:left="6dp" android:top="4dp" android:right="10dp" android:bottom="8dp"><shape><solid android:color="@color/px_red" /></shape></item>
+        <item android:left="4dp" android:top="6dp" android:right="8dp" android:bottom="10dp"><shape><solid android:color="@color/px_red" /></shape></item>
+        <item android:left="8dp" android:top="6dp" android:right="10dp" android:bottom="8dp"><shape><solid android:color="@color/px_red_deep" /></shape></item>
+        <item android:left="6dp" android:top="8dp" android:right="8dp" android:bottom="10dp"><shape><solid android:color="@color/px_red_deep" /></shape></item>
+      </layer-list>
+    </item>
+</selector>

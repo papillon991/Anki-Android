@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Fork, Pixel Cold War theme: 1-unit (2dp) divider -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <size
+        android:height="2dp" />
+    <solid android:color="@color/px_plate" />
+</shape>

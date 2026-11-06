@@ -2,6 +2,7 @@
 
 package com.ichi2.anki.reviewer
 
+import android.util.TypedValue
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
@@ -49,6 +50,30 @@ class EaseButton(
     fun setButtonScale(scale: Int) {
         val params = layout.layoutParams
         params.height = params.height * scale / 100
+    }
+
+    /** Fork: larger labels for the two-button answer bar */
+    fun setTextSizes(
+        easeSp: Float,
+        timeSp: Float,
+    ) {
+        easeTextView.setTextSize(TypedValue.COMPLEX_UNIT_SP, easeSp)
+        easeTimeView.setTextSize(TypedValue.COMPLEX_UNIT_SP, timeSp)
+    }
+
+    /** Fork: Pixel Cold War theme fonts, the label in Neo둥근모 at [easeDp], the next time in 마비옛체 */
+    fun applyPixelFonts(easeDp: Float) {
+        ForkPixelTheme.applyNeo(easeDp, easeTextView)
+        easeTimeView.typeface = ForkPixelTheme.mabinogi(easeTimeView.context)
+        easeTimeView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12f)
+    }
+
+    /** Fork: share of the answer bar's width */
+    fun setWeight(weight: Float) {
+        (layout.layoutParams as? LinearLayout.LayoutParams)?.let {
+            it.weight = weight
+            layout.layoutParams = it
+        }
     }
 
     fun setVisibility(visibility: Int) {

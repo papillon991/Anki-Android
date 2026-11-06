@@ -1,0 +1,5 @@
+마비옛체 (Mabinogi Classic)
+
+Copyright (c) 2022 FONTRIX. All rights reserved. Font designed by FONTRIX.
+
+넥슨이 무료로 배포한 글꼴 파일을 고치지 않고 그대로 넣었다 (res/font/mabinogi_classic.ttf).

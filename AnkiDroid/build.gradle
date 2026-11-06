@@ -153,7 +153,15 @@ android {
     signingConfigs {
         release {
             def keystorePath = System.getenv("KEYSTOREPATH")
-            if (keystorePath != null && !keystorePath.trim().isEmpty()) {
+            // fork: sign with the fork key when FORK_STORE_FILE/FORK_STORE_PASSWORD are given
+            // (~/.gradle/gradle.properties locally, Secrets in CI)
+            def forkPassword = project.findProperty("FORK_STORE_PASSWORD")
+            if (forkPassword != null && !forkPassword.toString().isEmpty() && project.findProperty("FORK_STORE_FILE") != null) {
+                storeFile file(project.findProperty("FORK_STORE_FILE"))
+                storePassword forkPassword.toString()
+                keyAlias "fork"
+                keyPassword forkPassword.toString()
+            } else if (keystorePath != null && !keystorePath.trim().isEmpty()) {
                 storeFile file(keystorePath)
                 storePassword System.getenv("KEYSTOREPWD") ?: System.getenv("KSTOREPWD")
                 keyAlias System.getenv("KEYALIAS")
@@ -334,7 +342,7 @@ android {
                                 throw new GradleException("Invalid param: '${invalid.join(', ')}'. Valid options: ${validOptions.join(', ')}.")
                             }
                         }
-                        validateInput(theme, ["light", "plain", "dark", "black", "eink", "all"])
+                        validateInput(theme, ["light", "plain", "dark", "black", "eink", "pixel_cold_war", "all"])
                         validateInput(device, ["phone", "tablet", "foldable", "desktop", "all"])
 
                         systemProperty "screenshot.theme", theme
